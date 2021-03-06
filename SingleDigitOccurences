@@ -1,0 +1,27 @@
+#Interview Question mThree 06/03/2021
+
+#count occurences of a single digit within a range
+
+#starting number, finishing number and digit
+a = 1
+b = 14
+d = 1
+
+#seperates numbers into individual digits 
+def numberofdigits(n,d):
+    count = 0
+    while (n > 0):
+        #checks if digit is present
+        if (n % 10) == d:
+            count = count + 1
+        n = n // 10
+    return count
+
+#totals occurences from numbers in range
+def numberofdigitsinrange(d):
+    count  = 0
+    for i in range(a, b+1):
+        count = count + numberofdigits(i,d)
+    return count
+ 
+print(numberofdigitsinrange(d))
