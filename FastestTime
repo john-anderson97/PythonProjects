@@ -1,0 +1,49 @@
+#Fastest Time determination, 07/03/2021.
+
+import datetime
+import random
+
+#function to format time from seconds
+def format_time(s):
+    time = datetime.timedelta(seconds=s)
+    new_time = datetime.datetime.strptime(str(time), "%H:%M:%S")-datetime.datetime(1900,1,1,0,0)
+    return(new_time)
+    
+#limits for the time generation
+min_year = max_year = datetime.datetime.now().year
+min_month = datetime.datetime.now().month
+min_day = datetime.datetime.now().day
+
+#initiliase start and end date of possible times
+start = datetime.datetime(min_year, min_month, min_day, 00, 00, 00)
+years = max_year - min_year+1
+
+end = start + datetime.timedelta(days=1 * years)
+
+time_storage = 100000000
+
+time_list = []
+
+for i in range(10):
+    #generates random date, the limit of (0.6,1) reduces massive variance than random.random()
+    random_date = start + (end - start) * random.uniform(0.6,1)
+    
+    #changes date to HH:mm:ss
+    a_timedelta = random_date - datetime.datetime(min_year,min_month,min_day,0,0)
+    #converst to seconds
+    second = round(a_timedelta.total_seconds())
+    
+    #detemines if time is faster or to ignore it
+    if second < time_storage:
+        time_storage = second
+    else:
+        time_storage = time_storage
+    
+    #appends formatted time to list
+    time_list.append(str(format_time(second)))
+   
+#converts fastest time to correct format 
+fastest_time = format_time(time_storage)
+
+print(fastest_time)
+print(time_list)
