@@ -1,0 +1,32 @@
+#Find occurences of multiple digits between two numbers. 07/03/2021
+
+import numpy as np
+ 
+#starting and finishing numbers
+n1= 1
+n2 = 68
+
+#digits to find, can be expanded to cover all digits 0 - 9
+d1 = '6'
+d2 = '8'
+
+#create list of interger numbers inclusive of the starting and finishing numbers
+list = np.arange(n1, n2 + 1, 1).tolist()
+
+count = 0
+
+#loops list for each number
+for number in list:
+    #counts if first digit is found in number
+    if d1 in str(number):
+        count = count + 1
+    #counts if second digit is found in number
+    if d2 in str(number):
+        count = count + 1
+    #removes a count of two as double count from previous
+    if d1 in str(number) and d2 in str(number):
+        count = count - 2
+    else:
+        count = count
+        
+print(count)
