@@ -12,7 +12,7 @@ d2 = '8'
 
 #create list of interger numbers inclusive of the starting and finishing numbers
 list = np.arange(n1, n2 + 1, 1).tolist()
-
+list2 = []
 count = 0
 
 #loops list for each number
@@ -20,13 +20,19 @@ for number in list:
     #counts if first digit is found in number
     if d1 in str(number):
         count = count + 1
+        list2.append(number)
     #counts if second digit is found in number
     if d2 in str(number):
         count = count + 1
+        list2.append(number)
     #removes a count of two as double count from previous
     if d1 in str(number) and d2 in str(number):
         count = count - 2
+        
+        del list2[list2.index(number)]
+        del list2[list2.index(number)]
     else:
         count = count
         
 print(count)
+print(list2)
