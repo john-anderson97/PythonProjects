@@ -1,0 +1,47 @@
+#Generate Lottery Numbers, 08/3/2021
+
+import random
+
+#create lotter number list
+lotterynumbers = []
+
+#loop to get 6 numbers
+for i in range (0,6):
+    #picks a random interger from 1 - 50
+    number = random.randint(1,50)
+    
+    #while the number is already in the array, pick a different number
+    while number in lotterynumbers:
+        number = random.randint(1,50)
+  
+    #append it to the list
+    lotterynumbers.append(number)
+
+#sort the list in ascending order
+lotterynumbers.sort()
+
+print("Today's lottery numbers are: ") 
+print(lotterynumbers)
+
+random_number = random.randint(1,50)
+picked_numbers = [5, 9, 27, 32, 41, 45]
+
+total_number = 0
+
+for i in range (0,6):
+    #check if each number is present in the lottery numbers
+    number = picked_numbers[i]
+    
+    #count the amount of numbers that match
+    if number in lotterynumbers:
+        total_number = total_number + 1
+
+#display results in certain ways
+if total_number == 0:
+    print("Sorry you got: " + str(total_number) + " numbers today.")
+elif total_number == 1 or total_number == 2:
+    print("You got: " + str(total_number) + " numbers today.")
+elif total_number == 3 or total_number == 4:
+    print("You got: " + str(total_number) + " numbers today!")
+else:
+    print("Well done you got a jackpot!")
