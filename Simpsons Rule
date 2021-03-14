@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+#intergration using Simpson's Rule
+def integrate(y_vals, h):
+    i = 1
+    total = y_vals[0] + y_vals[-1]
+    for y in y_vals[1:-1]:
+        if i % 2 == 0:
+            total += 2 * y
+        else:
+            total += 4 * y
+        i += 1
+    return total * (h / 3.0)
+
+#function to intergrate
+def function(x):
+  return np.cos(x)*np.sin(x)
+
+#upper/lower limits and step size
+upper_limit = np.pi/2
+lower_limit = -upper_limit
+interval = 0.0001
+
+sampl = np.random.uniform(low=0.5, high=13.3, size=(50,))
+
+#creates array of x_values
+x_values = np.arange(lower_limit,upper_limit, interval)
+#creates array of x_values
+x_values = np.random.uniform(lower_limit,upper_limit,10000)
+print(x_values)
+
+#intergrates the function with x_values
+area = integrate(function(x_values), interval)
+print("The area is", abs(area))
+
+#plots the curve
+plt.scatter(x_values,function(x_values), s = 3)
+plt.show()
