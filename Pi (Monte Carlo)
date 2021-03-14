@@ -1,0 +1,42 @@
+import random 
+import math 
+import matplotlib.pyplot as plt
+
+
+
+# Total number of points to plot
+total = 25
+
+x_points = []
+y_points = []
+
+while total < 10000:
+  # Number of points that land inside/outisde the circle
+  inside = 0
+  
+  # Iterate for the total number of points.
+  for i in range(0, total):
+    # Generate random x, y in [0, 1].
+    x = random.uniform(-1,1)
+    y = random.uniform(-1,1)
+  
+    #counts points inside circle
+    if x**2 + y**2 < 1.0:
+      inside += 1
+    
+  # inside / total = pi / 4
+  pi = (float(inside) / total) * 4
+  
+  x_points.append(total)
+  y_points.append(pi)
+  
+  #display value of pi
+  print(pi)
+  
+  total = total + 25
+
+#plots show value of pi for amount of data points
+plt.plot(x_points,y_points)
+plt.show()
+  
+  
