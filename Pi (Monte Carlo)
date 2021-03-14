@@ -1,8 +1,8 @@
+#Pi Monte Carlo Method (Multiple Amount of Total Points), 14/3/2021
+
 import random 
 import math 
 import matplotlib.pyplot as plt
-
-
 
 # Total number of points to plot
 total = 25
